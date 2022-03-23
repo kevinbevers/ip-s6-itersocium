@@ -1,2 +1,4 @@
 # ip-s6-itersocium
-Codebase for a Fullstack Application  that enables you to plan your travels and share them.
+Codebase for a fullstack application that enables you to plan your travels and share them.
+![Logo](/docs/images/logo.png)
+
