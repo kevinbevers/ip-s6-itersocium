@@ -78,34 +78,14 @@ CREATE TABLE hdb_catalog.hdb_version (
     cli_state jsonb DEFAULT '{}'::jsonb NOT NULL,
     console_state jsonb DEFAULT '{}'::jsonb NOT NULL
 );
-CREATE TABLE public."migrationTableTest" (
-    pk integer NOT NULL,
-    anothername text NOT NULL
+CREATE TABLE hdb_catalog.migration_settings (
+    setting text NOT NULL,
+    value text NOT NULL
 );
-COMMENT ON TABLE public."migrationTableTest" IS 'testing migration files being created';
-CREATE SEQUENCE public."migrationTableTest_pk_seq"
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-ALTER SEQUENCE public."migrationTableTest_pk_seq" OWNED BY public."migrationTableTest".pk;
-CREATE TABLE public.test (
-    pk integer NOT NULL,
-    name text
+CREATE TABLE hdb_catalog.schema_migrations (
+    version bigint NOT NULL,
+    dirty boolean NOT NULL
 );
-COMMENT ON TABLE public.test IS 'test';
-CREATE SEQUENCE public.test_pk_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-ALTER SEQUENCE public.test_pk_seq OWNED BY public.test.pk;
-ALTER TABLE ONLY public."migrationTableTest" ALTER COLUMN pk SET DEFAULT nextval('public."migrationTableTest_pk_seq"'::regclass);
-ALTER TABLE ONLY public.test ALTER COLUMN pk SET DEFAULT nextval('public.test_pk_seq'::regclass);
 ALTER TABLE ONLY hdb_catalog.hdb_action_log
     ADD CONSTRAINT hdb_action_log_pkey PRIMARY KEY (id);
 ALTER TABLE ONLY hdb_catalog.hdb_cron_event_invocation_logs
@@ -124,10 +104,10 @@ ALTER TABLE ONLY hdb_catalog.hdb_schema_notifications
     ADD CONSTRAINT hdb_schema_notifications_pkey PRIMARY KEY (id);
 ALTER TABLE ONLY hdb_catalog.hdb_version
     ADD CONSTRAINT hdb_version_pkey PRIMARY KEY (hasura_uuid);
-ALTER TABLE ONLY public."migrationTableTest"
-    ADD CONSTRAINT "migrationTableTest_pkey" PRIMARY KEY (pk);
-ALTER TABLE ONLY public.test
-    ADD CONSTRAINT test_pkey PRIMARY KEY (pk);
+ALTER TABLE ONLY hdb_catalog.migration_settings
+    ADD CONSTRAINT migration_settings_pkey PRIMARY KEY (setting);
+ALTER TABLE ONLY hdb_catalog.schema_migrations
+    ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
 CREATE INDEX hdb_cron_event_invocation_event_id ON hdb_catalog.hdb_cron_event_invocation_logs USING btree (event_id);
 CREATE INDEX hdb_cron_event_status ON hdb_catalog.hdb_cron_events USING btree (status);
 CREATE UNIQUE INDEX hdb_cron_events_unique_scheduled ON hdb_catalog.hdb_cron_events USING btree (trigger_name, scheduled_time) WHERE (status = 'scheduled'::text);

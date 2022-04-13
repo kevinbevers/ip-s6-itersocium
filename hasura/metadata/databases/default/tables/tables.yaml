@@ -1,1 +1,2 @@
-- "!include public_test.yaml"
+- "!include _helloworld_article.yaml"
+- "!include _helloworld_author.yaml"
