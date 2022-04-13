@@ -1,0 +1,11 @@
+version: '3.6'
+services:
+
+  bytebase:
+    image: bytebase/bytebase:1.0.0
+    restart: always
+    volumes:
+    - ~/.bytebase/data:/var/opt/bytebase
+    ports:
+    - 8081:80
+
