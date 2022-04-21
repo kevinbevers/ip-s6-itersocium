@@ -1,0 +1,58 @@
+# This docker compose is far from ideal and has issues with migration as well as starting up. Use postgres locally and use yugabyte in production
+version: '3.6'
+services:
+  yb-master:
+      image: yugabytedb/yugabyte:latest
+      container_name: yb-master-n1
+      command: [ "/home/yugabyte/bin/yb-master", 
+                "--fs_data_dirs=/mnt/disk0,/mnt/disk1", 
+                "--master_addresses=yb-master-n1:7100", 
+                "--replication_factor=1"]
+      ports:
+      - "7000:7000"
+      environment:
+        SERVICE_7000_NAME: yb-master
+  yb-tserver:
+      image: yugabytedb/yugabyte:latest
+      container_name: yb-tserver-n1
+      command: [ "/home/yugabyte/bin/yb-tserver", 
+                "--fs_data_dirs=/mnt/disk0,/mnt/disk1",
+                "--start_pgsql_proxy", 
+                "--tserver_master_addrs=yb-master-n1:7100"]
+      ports:
+      - "9042:9042"
+      - "6379:6379"
+      - "5434:5433"
+      - "9000:9000"
+      environment:
+        SERVICE_5433_NAME: ysql
+        SERVICE_9042_NAME: ycql
+        SERVICE_6379_NAME: yedis
+        SERVICE_9000_NAME: yb-tserver
+      depends_on:
+      - yb-master
+  
+  graphql-engine:
+    image: hasura/graphql-engine:v2.5.0.cli-migrations-v3
+    ports:
+    - "8080:8080"
+    depends_on:
+    - yb-tserver
+    restart: always
+    environment:
+      ## postgres database to store Hasura metadata
+      HASURA_GRAPHQL_DATABASE_URL: postgres://postgres@yb-tserver:5433/yugabyte
+      # HASURA_GRAPHQL_METADATA_DATABASE_URL: postgres://postgres:postgrespassword@postgres:5432/postgres
+      ## this env var can be used to add the above postgres database to Hasura as a data source. this can be removed/updated based on your needs
+      PG_DATABASE_URL: postgres://postgres@yb-tserver:5433/postgres
+      ## enable the console served by server
+      HASURA_GRAPHQL_ENABLE_CONSOLE: "false" # set to "false" to disable console
+      ## enable debugging mode. It is recommended to disable this in production
+      HASURA_GRAPHQL_DEV_MODE: "true"
+      HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
+      ## uncomment next line to set an admin secret
+      # HASURA_GRAPHQL_ADMIN_SECRET: myadminsecretkey
+    volumes:
+    - ./hasura/migrations:/hasura-migrations
+    - ./hasura/metadata:/hasura-metadata
+
