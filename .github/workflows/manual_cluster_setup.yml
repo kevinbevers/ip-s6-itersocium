@@ -37,15 +37,23 @@ jobs:
 
           helm repo update
 
-          helm search repo yugabytedb/yugabyte
-
           kubectl create namespace itersocium
 
           helm install itersocium yugabytedb/yugabyte \
           --set resource.master.requests.cpu=0.5,resource.master.requests.memory=0.5Gi,\
           resource.tserver.requests.cpu=0.5,resource.tserver.requests.memory=0.5Gi --namespace itersocium
 
+      - name: Apply / Add Hasura deployment
+        run: |
           kubectl apply -f ./k8s -n itersocium
+
+          kubectl wait --for=condition=ready
+
+          kubectl get pods --namespace itersocium
+      
+      - name: Check Pods
+        run: |
+          kubectl wait --for=condition=Ready pods --all --namespace itersocium
 
           kubectl get pods --namespace itersocium
 
