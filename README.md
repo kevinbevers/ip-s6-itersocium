@@ -109,7 +109,7 @@ Create a itersocium namespace:
 ```bash
 $ kubectl create namespace itersocium
 $ helm install itersocium yugabytedb/yugabyte \
---set replicas.tserver=1 resource.master.requests.cpu=0.5,resource.master.requests.memory=0.5Gi,\
+--set resource.master.requests.cpu=0.5,resource.master.requests.memory=0.5Gi,\
 resource.tserver.requests.cpu=0.5,resource.tserver.requests.memory=0.5Gi --namespace itersocium
 ```
 
