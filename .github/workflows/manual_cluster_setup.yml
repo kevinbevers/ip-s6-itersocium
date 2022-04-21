@@ -49,9 +49,9 @@ jobs:
 
           kubectl get pods --namespace itersocium
       
-      - name: Check Pods
+      - name: Wait for pods to be ready (5 min)
         run: |
-          kubectl wait --for=condition=Ready pods --all --namespace itersocium
+          kubectl wait --for=condition=Ready pods --all --namespace itersocium --timeout=300s
 
           kubectl get pods --namespace itersocium
 
