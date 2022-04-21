@@ -119,3 +119,8 @@ Use the deployment.yaml from the k8s folder to deploy hasura to the cluster.
 ```bash
 kubectl apply -f ./k8s -n itersocium
 ```
+
+## Links
+
+- [Proof of architecture scalability](https://github.com/yugabyte/yugabyte-graphql-apps/blob/master/graphql-subscription-with-yugabytedb/1M_subscriptions.md)
+
