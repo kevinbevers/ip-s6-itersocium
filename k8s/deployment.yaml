@@ -4,7 +4,7 @@ metadata:
   labels:
     app: hasura
   name: hasura-headless
-  namespace: yb-demo
+  namespace: itersocium
 spec:
   ports:
   - protocol: TCP
@@ -21,7 +21,7 @@ metadata:
     app: hasura
     hasuraService: custom
   name: hasura
-  namespace: yb-demo
+  namespace: itersocium
 spec:
   replicas: 1
   serviceName: hasura-headless
