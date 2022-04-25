@@ -41,7 +41,9 @@ jobs:
 
           helm install itersocium yugabytedb/yugabyte \
           --set resource.master.requests.cpu=0.5,resource.master.requests.memory=0.5Gi,\
-          resource.tserver.requests.cpu=0.5,resource.tserver.requests.memory=0.5Gi, replicas.tserver=1, --namespace itersocium
+          resource.tserver.requests.cpu=0.5,resource.tserver.requests.memory=0.5Gi, --namespace itersocium
+          
+          helm upgrade --set replicas.tserver=1 itersocium ./yugabyte
 
       - name: Apply / Add Hasura deployment
         run: |
