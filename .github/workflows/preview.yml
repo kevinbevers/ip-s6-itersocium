@@ -9,8 +9,9 @@ on:
 jobs:
   stage-app:
     runs-on: ubuntu-latest
-    env:
-      working-directory: ./IterSocium
+    defaults:
+        run:
+          working-directory: ./IterSocium
     steps:
       - name: 🏗 Setup repo
         uses: actions/checkout@v2
@@ -51,5 +52,5 @@ jobs:
       env:
        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        name: pr-${{ github.event.number }}
+        name: pr-${{ github.event.number }}-kevinbevers
         timeout: 15m
