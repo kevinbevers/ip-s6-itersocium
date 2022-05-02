@@ -15,7 +15,7 @@ spec:
   type: LoadBalancer
 ---
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   labels:
     app: hasura
@@ -51,10 +51,30 @@ spec:
         ports:
         - containerPort: 8080
           protocol: TCP
-        # resources:
-        #   limits:
-        #     cpu: 4200m
-        #     memory: 8Gi
-        #   requests:
-        #     cpu: "4"
-        #     memory: 8Gi
+        resources:
+          limits:
+            cpu: "4"
+            memory: 8Gi
+          requests:
+            cpu: "4"
+            memory: 8Gi
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hasura
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: hasura
+  minReplicas: 1
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+  
