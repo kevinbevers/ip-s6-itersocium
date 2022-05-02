@@ -22,7 +22,6 @@ jobs:
           node-version: 16.x
           cache: yarn
           cache-dependency-path: ./IterSocium/yarn.lock
-        run: yarn
 
       - name: 🏗 Setup Expo
         uses: expo/expo-github-action@v7
