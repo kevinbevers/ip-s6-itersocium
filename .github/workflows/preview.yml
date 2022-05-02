@@ -21,6 +21,7 @@ jobs:
         with:
           node-version: 16.x
           cache: yarn
+          cache-dependency-path: ./IterSocium/yarn.lock
         run: yarn
 
       - name: 🏗 Setup Expo
