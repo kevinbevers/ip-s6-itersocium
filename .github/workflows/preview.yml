@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
         run:
-          working-directory: ./IterSocium
+          working-directory: IterSocium
     steps:
       - name: 🏗 Setup repo
         uses: actions/checkout@v2
