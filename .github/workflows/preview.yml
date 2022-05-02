@@ -43,6 +43,7 @@ jobs:
       - name: Publish to Expo & create a QR code
         uses: expo/expo-preview-action@v1
         with:
+          project-root: ./IterSocium
           channel: pr-${{ github.event.number }}
         id: preview
       - name: Comment deployment link
