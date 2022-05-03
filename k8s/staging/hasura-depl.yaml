@@ -55,12 +55,6 @@ spec:
       initContainers:
         - name: init-hasura
           image: okteto.dev/hasura:migrate
-          command:
-          - '/bin/sh'
-          - '-c'
-          - >
-            set -ex;
-            until wget --fail --connect-timeout 5 http://localhost:8080/healthz; do sleep 2; done
           env:
           - name: HASURA_GRAPHQL_MIGRATIONS_DIR
             value: /migrations
