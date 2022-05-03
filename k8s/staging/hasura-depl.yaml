@@ -55,7 +55,12 @@ spec:
       initContainers:
         - name: init-hasura
           image: okteto.dev/hasura:migrate
-          command: ['bash', '-c', 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' localhost:9000)" != "200" ]]; do sleep 5; done']
+          command:
+          - '/bin/sh'
+          - '-c'
+          - >
+            set -ex;
+            until curl --fail --connect-timeout 5 http://localhost:8080/healthz; do sleep 2; done
           env:
           - name: HASURA_GRAPHQL_MIGRATIONS_DIR
             value: /migrations
