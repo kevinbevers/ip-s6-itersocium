@@ -22,7 +22,6 @@ metadata:
   name: hasura
 spec:
   replicas: 1
-  serviceName: hasura-headless
   selector:
     matchLabels:
       app: hasura
