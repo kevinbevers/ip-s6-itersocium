@@ -61,5 +61,5 @@ spec:
           - name: HASURA_GRAPHQL_METADATA_DIR
             value: /metadata
           - name: HASURA_GRAPHQL_DATABASE_URL
-          value: postgres://yugabyte:@yb-tservers:5433/yugabyte
+            value: postgres://yugabyte:@yb-tservers:5433/yugabyte
   
