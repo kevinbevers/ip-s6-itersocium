@@ -62,4 +62,5 @@ spec:
             value: /metadata
           - name: HASURA_GRAPHQL_DATABASE_URL
             value: postgres://yugabyte:@yb-tservers:5433/yugabyte
+          command: ['sh', '-c', 'echo The app is running! && sleep 3600']
   
