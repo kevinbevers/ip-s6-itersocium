@@ -47,7 +47,7 @@ jobs:
 
       - name: Apply / Add Hasura deployment
         run: |
-          kubectl apply -f ./k8s/dev -n itersocium
+          kubectl apply -f ./k8s/staging -n itersocium
       
       - name: Show Pods
         run: |
