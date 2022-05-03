@@ -60,7 +60,7 @@ spec:
           - '-c'
           - >
             set -ex;
-            until curl --fail --connect-timeout 5 http://localhost:8080/healthz; do sleep 2; done
+            until wget --fail --connect-timeout 5 http://localhost:8080/healthz; do sleep 2; done
           env:
           - name: HASURA_GRAPHQL_MIGRATIONS_DIR
             value: /migrations
