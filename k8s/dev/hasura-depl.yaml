@@ -36,11 +36,11 @@ spec:
         name: hasura
         env:
         - name: HASURA_GRAPHQL_DATABASE_URL
-          value: postgres://yugabyte:@yb-tservers.itersocium.svc.cluster.local:5433/yugabyte
+          value: postgres://yugabyte:@yb-tservers:5433/yugabyte
         - name: HASURA_GRAPHQL_DEV_MODE
           value: "true"
         - name: PG_DATABASE_URL
-          value: postgres://yugabyte:@yb-tservers.itersocium.svc.cluster.local:5433/yugabyte
+          value: postgres://yugabyte:@yb-tservers:5433/yugabyte
         - name: HASURA_GRAPHQL_ENABLED_LOG_TYPES
           value: startup, http-log, webhook-log, websocket-log, query-log
         - name: HASURA_GRAPHQL_ENABLE_CONSOLE
