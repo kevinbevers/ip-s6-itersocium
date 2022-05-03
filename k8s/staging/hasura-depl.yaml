@@ -31,7 +31,7 @@ spec:
         app: hasura
     spec:
       containers:
-      - image: hokteto.dev/hasura:migrate
+      - image: okteto.dev/hasura:migrate
         imagePullPolicy: IfNotPresent
         name: hasura
         env:
