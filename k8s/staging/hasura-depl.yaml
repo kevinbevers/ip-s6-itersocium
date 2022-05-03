@@ -56,4 +56,9 @@ spec:
   - name: init-hasura
     image: okteto.dev/hasura:migrate
     command: ['bash', '-c', 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' localhost:9000)" != "200" ]]; do sleep 5; done']
+  - env:
+    - name: HASURA_GRAPHQL_MIGRATIONS_DIR
+      value: /migrations
+    - name: HASURA_GRAPHQL_METADATA_DIR
+      value: /metadata
   
