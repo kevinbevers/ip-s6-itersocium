@@ -31,7 +31,7 @@ spec:
         app: hasura
     spec:
       containers:
-      - image: hasura/graphql-engine:v2.6.0
+      - image: hokteto.dev/hasura:migrate
         imagePullPolicy: IfNotPresent
         name: hasura
         env:
@@ -52,14 +52,14 @@ spec:
           limits:
             cpu: "1"
             memory: 2Gi
-      initContainers:
-        - name: init-hasura
-          image: okteto.dev/hasura:migrate
-          env:
-          - name: HASURA_GRAPHQL_MIGRATIONS_DIR
-            value: /migrations
-          - name: HASURA_GRAPHQL_METADATA_DIR
-            value: /metadata
-          - name: HASURA_GRAPHQL_DATABASE_URL
-            value: postgres://yugabyte:@yb-tservers:5433/yugabyte
+      # initContainers:
+      #   - name: init-hasura
+      #     image: okteto.dev/hasura:migrate
+      #     env:
+      #     - name: HASURA_GRAPHQL_MIGRATIONS_DIR
+      #       value: /migrations
+      #     - name: HASURA_GRAPHQL_METADATA_DIR
+      #       value: /metadata
+      #     - name: HASURA_GRAPHQL_DATABASE_URL
+      #       value: postgres://yugabyte:@yb-tservers:5433/yugabyte
   
