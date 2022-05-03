@@ -1,0 +1,4 @@
+build:
+  hasura:
+    context: hasura
+    dockerfile: Dockerfile

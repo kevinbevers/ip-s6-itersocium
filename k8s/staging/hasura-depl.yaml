@@ -31,7 +31,7 @@ spec:
         app: hasura
     spec:
       containers:
-      - image: hasura/graphql-engine:v2.5.1
+      - image: hasura/graphql-engine:v2.6.0
         imagePullPolicy: IfNotPresent
         name: hasura
         env:
@@ -52,4 +52,8 @@ spec:
           limits:
             cpu: "1"
             memory: 2Gi
+  initContainers:
+  - name: init-hasura
+    image: okteto.dev/hasura:migrate
+    command: ['bash', '-c', 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' localhost:9000)" != "200" ]]; do sleep 5; done']
   
