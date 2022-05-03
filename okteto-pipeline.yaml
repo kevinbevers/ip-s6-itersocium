@@ -1,5 +1,5 @@
 deploy:
   - helm repo add yugabytedb https://charts.yugabyte.com
   - helm repo update
-  - helm install yugabytedb/yugabyte --set resource.master.size=1Gi,resource.tserver.size=1Gi,resource.master.requests.cpu=0.5,resource.master.requests.memory=0.5Gi,resource.tserver.requests.cpu=0.5,resource.tserver.requests.memory=0.5Gi,replicas.master=1,replicas.tserver=1
+  - helm install --generate-name yugabytedb/yugabyte --set resource.master.size=1Gi,resource.tserver.size=1Gi,resource.master.requests.cpu=0.5,resource.master.requests.memory=0.5Gi,resource.tserver.requests.cpu=0.5,resource.tserver.requests.memory=0.5Gi,replicas.master=1,replicas.tserver=1
   - kubectl apply -f ./k8s/dev
