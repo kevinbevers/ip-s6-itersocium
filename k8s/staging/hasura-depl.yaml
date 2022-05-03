@@ -45,6 +45,10 @@ spec:
           value: startup, http-log, webhook-log, websocket-log, query-log
         - name: HASURA_GRAPHQL_ENABLE_CONSOLE
           value: "true"
+        - name: HASURA_GRAPHQL_MIGRATIONS_DIR
+          value: /migrations
+        - name: HASURA_GRAPHQL_METADATA_DIR
+          value: /metadata
         ports:
         - containerPort: 8080
           protocol: TCP
