@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "Expo Starter",
-    "slug": "expo-starter",
+    "name": "IterSocium",
+    "slug": "iter-socium",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/logo.png",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/splash.png",
@@ -27,7 +27,7 @@
       "package": "io.batyr.expostarter"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/logo.png"
     }
   }
 }
