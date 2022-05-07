@@ -36,6 +36,7 @@ const {width} = Dimensions.get('screen');
 const HomeScreen = ({navigation}) => {
   
   return (<>
+  <View flex backgroundColor={COLORS.white}>
   <View backgroundColor={COLORS.primary} useSafeArea={true}>
     <StatusBar style="auto" backgroundColor={COLORS.primary} />
     </View>
@@ -51,6 +52,7 @@ const HomeScreen = ({navigation}) => {
             renderItem={({item}) => <RecommendedCard navigation={navigation} place={item} />}
           />
         </View>
+    </View>
     </View>
     </>);
 };
