@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
         run:
-          working-directory: ./IterSocium
+          working-directory: ./App
     steps:
       - name: 🏗 Setup repo
         uses: actions/checkout@v2
@@ -21,7 +21,7 @@ jobs:
         with:
           node-version: 16.x
           cache: yarn
-          cache-dependency-path: ./IterSocium/yarn.lock
+          cache-dependency-path: ./App/yarn.lock
 
       - name: 🏗 Setup Expo
         uses: expo/expo-github-action@v7
@@ -47,7 +47,7 @@ jobs:
           APP_ENV: 'staging'
           API_URL: 'https://graphql-engine-pr-${{ github.event.number }}-kevinbevers.cloud.okteto.net/v1/graphql'
         with:
-          project-root: ./IterSocium
+          project-root: ./App
           channel: pr-${{ github.event.number }}
         id: preview
       - name: Comment deployment link
