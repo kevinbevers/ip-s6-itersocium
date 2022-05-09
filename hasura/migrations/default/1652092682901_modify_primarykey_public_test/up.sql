@@ -1,6 +1,0 @@
-BEGIN TRANSACTION;
-ALTER TABLE "public"."test" DROP CONSTRAINT "test_pkey";
-
-ALTER TABLE "public"."test"
-    ADD CONSTRAINT "test_pkey" PRIMARY KEY ("tableID2");
-COMMIT TRANSACTION;

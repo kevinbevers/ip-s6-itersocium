@@ -33,11 +33,14 @@ import RecommendedCard from '../components/RecommendedCard';
 const {width} = Dimensions.get('screen');
 import { useQuery, gql } from 'urql';
 
-const TestQuery = gql`
-query TestQuery {
-  test {
-    description
-    tableID
+const PopularPlaces = gql`
+query PopularPlaces {
+  places {
+    details
+    id
+    image
+    location
+    name
   }
 }
 `;
@@ -45,7 +48,7 @@ query TestQuery {
 
 const HomeScreen = ({navigation}) => {
   const [result] = useQuery({
-    query: TestQuery,
+    query: PopularPlaces,
   });
 
   const { data, fetching, error } = result;
@@ -69,7 +72,7 @@ const HomeScreen = ({navigation}) => {
           <FlatList
             showsHorizontalScrollIndicator={false}
             showsVerticalScrollIndicator={true}
-            data={places}
+            data={data && data.places ? data.places : []}
             renderItem={({item}) => <RecommendedCard navigation={navigation} place={item} />}
           />
         </View>

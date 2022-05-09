@@ -25,7 +25,7 @@ const DetailsScreen = ({navigation, route}) => {
           <Icon name="more-vert" size={28} color={COLORS.white} />
         </View>
     </View>
-      <ImageBackground style={{flex: 0.7}} source={place.image}>
+      <ImageBackground style={{flex: 0.7}} source={{uri: place.image}}>
         <View style={style.imageDetails}>
           <Text
             style={{

@@ -17,7 +17,7 @@ const RecommendedCard = ({navigation, place}) => {
       <TouchableOpacity
       activeOpacity={0.8}
       onPress={() => navigation.navigate('DetailsScreen', place)}>
-      <ImageBackground style={style.rmCardImage} source={place.image} blurRadius={2}>
+      <ImageBackground style={style.rmCardImage} source={{uri: place.image, height: 200}} blurRadius={2}>
         <Text
           style={{
             color: COLORS.white,
