@@ -1,0 +1,1 @@
+INSERT INTO "public"."places"("id", "name", "location", "image", "details") VALUES (5, E'Mittenberg', E'Germany', E'https://media.istockphoto.com/photos/miltenberg-medieval-old-town-bavaria-germany-picture-id1146686537?k=20&m=1146686537&s=170667a&w=0&h=l4XlTSzMvSpiCjCFJD5iulksIZXqcKcFQIWcIViYnfc=', E'A nice Bavarian town.');

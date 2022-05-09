@@ -1,0 +1,69 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: hasura
+  name: hasura-headless
+spec:
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+  selector:
+    app: hasura
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: hasura
+    hasuraService: custom
+  name: hasura
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hasura
+  template:
+    metadata:
+      labels:
+        app: hasura
+    spec:
+      containers:
+      - image: okteto.dev/hasura:migrate
+        imagePullPolicy: IfNotPresent
+        name: hasura
+        env:
+        - name: HASURA_GRAPHQL_DATABASE_URL
+          value: postgres://yugabyte:@yb-tservers:5433/yugabyte
+        - name: HASURA_GRAPHQL_DEV_MODE
+          value: "true"
+        - name: PG_DATABASE_URL
+          value: postgres://yugabyte:@yb-tservers:5433/yugabyte
+        - name: HASURA_GRAPHQL_ENABLED_LOG_TYPES
+          value: startup, http-log, webhook-log, websocket-log, query-log
+        - name: HASURA_GRAPHQL_ENABLE_CONSOLE
+          value: "true"
+        - name: HASURA_GRAPHQL_MIGRATIONS_DIR
+          value: /migrations
+        - name: HASURA_GRAPHQL_METADATA_DIR
+          value: /metadata
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        resources:
+          limits:
+            cpu: "1"
+            memory: 2Gi
+      # initContainers:
+      #   - name: init-hasura
+      #     image: okteto.dev/hasura:migrate
+      #     env:
+      #     - name: HASURA_GRAPHQL_MIGRATIONS_DIR
+      #       value: /migrations
+      #     - name: HASURA_GRAPHQL_METADATA_DIR
+      #       value: /metadata
+      #     - name: HASURA_GRAPHQL_DATABASE_URL
+      #       value: postgres://yugabyte:@yb-tservers:5433/yugabyte
+  
