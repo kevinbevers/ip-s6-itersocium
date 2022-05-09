@@ -45,7 +45,7 @@ jobs:
         uses: expo/expo-preview-action@v1
         env:
           APP_ENV: 'staging'
-          API_URL: 'https://graphql-engine-pr-${{ github.event.number }}-kevinbevers.cloud.okteto.net/v1/graphql'
+          API_URL: 'https://hasura-headless-pr-${{ github.event.number }}-kevinbevers.cloud.okteto.net/v1/graphql'
         with:
           project-root: ./App
           channel: pr-${{ github.event.number }}
