@@ -15,6 +15,7 @@ let Config = {
   export default {
     name: "IterSocium",
     slug: "iter-socium",
+    privacy: "unlisted",
     version: "1.0.0",
     orientation: "portrait",
     icon: "./assets/icon.png",
