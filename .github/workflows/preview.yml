@@ -34,6 +34,7 @@ jobs:
 
       # - name: 🚀 Publish preview
       #   run: expo publish --release-channel=pr-${{ github.event.number }} --non-interactive
+      #    id: preview
 
       # - name: 💬 Comment preview
       #   uses: expo/expo-github-action/preview-comment@v7
@@ -42,6 +43,9 @@ jobs:
 
       - name: Publish to Expo & create a QR code
         uses: expo/expo-preview-action@v1
+        env:
+          APP_ENV: 'staging'
+          API_URL: 'https://graphql-engine-pr-${{ github.event.number }}-kevinbevers.cloud.okteto.net/v1/graphql'
         with:
           project-root: ./IterSocium
           channel: pr-${{ github.event.number }}

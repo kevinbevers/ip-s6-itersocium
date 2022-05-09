@@ -31,12 +31,33 @@ import COLORS from '../consts/colors';
 import places from '../consts/places';
 import RecommendedCard from '../components/RecommendedCard';
 const {width} = Dimensions.get('screen');
+import { useQuery, gql } from 'urql';
+
+const TestQuery = gql`
+query TestQuery {
+  test {
+    description
+    tableID
+  }
+}
+`;
 
 
 const HomeScreen = ({navigation}) => {
+  const [result] = useQuery({
+    query: TestQuery,
+  });
+
+  const { data, fetching, error } = result;
+
+  if (fetching) {
+    return <View flex center useSafeArea={true}><Text>Loading ....</Text></View>;
+  }
+  if (error) {
+    return <View flex center useSafeArea={true}><Text>Oh no... {error.message}</Text></View>;
+  }
   
   return (<>
-  <View flex backgroundColor={COLORS.white}>
   <View backgroundColor={COLORS.primary} useSafeArea={true}>
     <StatusBar style="auto" backgroundColor={COLORS.primary} />
     </View>
@@ -44,7 +65,7 @@ const HomeScreen = ({navigation}) => {
         <View paddingB-10 paddingH-20 style={{backgroundColor: COLORS.primary}}>
             <Text style={style.headerTitle}>Popular travels</Text>
         </View>
-        <View>
+        <View backgroundColor={COLORS.white}>
           <FlatList
             showsHorizontalScrollIndicator={false}
             showsVerticalScrollIndicator={true}
@@ -52,7 +73,6 @@ const HomeScreen = ({navigation}) => {
             renderItem={({item}) => <RecommendedCard navigation={navigation} place={item} />}
           />
         </View>
-    </View>
     </View>
     </>);
 };
