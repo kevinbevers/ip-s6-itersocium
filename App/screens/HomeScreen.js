@@ -17,7 +17,7 @@
 //       </>);
 // }
 
-import React from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -47,15 +47,17 @@ query PopularPlaces {
 
 
 const HomeScreen = ({navigation}) => {
-  const [result] = useQuery({
+  const [result, reexecuteQuery] = useQuery({
     query: PopularPlaces,
   });
 
+  const refresh = () => {
+    // Refetch the query and skip the cache
+    reexecuteQuery({ requestPolicy: 'network-only' });
+  };
+
   const { data, fetching, error } = result;
 
-  if (fetching) {
-    return <View flex center useSafeArea={true}><Text>Loading ....</Text></View>;
-  }
   if (error) {
     return <View flex center useSafeArea={true}><Text>Oh no... {error.message}</Text></View>;
   }
@@ -70,6 +72,8 @@ const HomeScreen = ({navigation}) => {
         </View>
         <View backgroundColor={COLORS.white}>
           <FlatList
+            onRefresh={() => refresh()}
+            refreshing={fetching}
             showsHorizontalScrollIndicator={false}
             showsVerticalScrollIndicator={true}
             data={data && data.places ? data.places : []}

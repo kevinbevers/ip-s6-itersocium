@@ -32,7 +32,7 @@ spec:
     spec:
       containers:
       - image: okteto.dev/hasura:migrate
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         name: hasura
         env:
         - name: HASURA_GRAPHQL_DATABASE_URL
