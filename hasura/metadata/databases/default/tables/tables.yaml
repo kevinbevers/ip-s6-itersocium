@@ -1,2 +1,1 @@
-- "!include _helloworld_article.yaml"
-- "!include _helloworld_author.yaml"
+- "!include public_places.yaml"
