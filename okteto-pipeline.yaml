@@ -1,5 +1,5 @@
 deploy:
-  - okteto build -t okteto.dev/hasura:migrate hasura
+  - okteto build -t okteto.dev/hasura:migrate hasura --no-cache
   - helm repo add yugabytedb https://charts.yugabyte.com
   - helm repo update
   - helm install yb-db yugabytedb/yugabyte --set storage.master.size=1Gi,storage.tserver.size=1Gi,resource.master.requests.cpu=1,resource.master.limits.cpu=1,resource.master.requests.memory=1Gi,resource.master.limits.memory=1Gi,resource.tserver.requests.cpu=1,resource.tserver.limits.cpu=1,resource.tserver.requests.memory=1Gi,resource.tserver.limits.memory=1Gi,replicas.master=1,replicas.tserver=1
