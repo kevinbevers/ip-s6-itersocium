@@ -14,7 +14,7 @@ Developed to proof the learning outcomes of semester 6 IT & Software Engineering
   <a href="#tech-stack">Tech Stack</a> •
   <a href="#development">Development</a> •
   <a href="#cluster-setup">Cluster Setup</a> •
-  <a href="#how-to-use">Links</a>
+  <a href="#links">Links</a>
 </p>
 
 ## Tech Stack
