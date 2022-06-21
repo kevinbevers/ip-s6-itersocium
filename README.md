@@ -6,6 +6,7 @@
   IterSocium
   <br>
 </h1>
+
 <p>
 Codebase for a fullstack application that enables you to plan your travels and share them.<br /><br />
 Developed to proof the learning outcomes of semester 6 IT & Software Engineering @<br /> <a href="https://fontys.nl/Over-Fontys/Fontys-Hogeschool-ICT.htm">Fontys university of applied sciences.</a>
@@ -102,7 +103,7 @@ First start the cluster with the following command:
  ```bash
  $ minikube start --cpus 4 --memory 5120
  ```
-
+ 
 If you are running in a resource-constrained environment or a local environment, such as Minikube, you have to change the default resource requirements by using the following command:
 
 Create a itersocium namespace:
