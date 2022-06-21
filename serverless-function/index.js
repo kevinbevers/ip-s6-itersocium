@@ -1,11 +1,13 @@
-const express = require('express')
-const app = express()
-const port = 443
+module.exports = async function (context, req) {
+    context.log('JavaScript HTTP trigger function processed a request.');
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+    const name = (req.query.name || (req.body && req.body.name));
+    const responseMessage = name
+        ? "Hello, " + name + ". This HTTP triggered function executed successfully."
+        : "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.";
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+    context.res = {
+        // status: 200, /* Defaults to 200 */
+        body: responseMessage
+    };
+}
