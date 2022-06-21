@@ -1,3 +1,5 @@
+[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-black.svg)](https://sonarcloud.io/summary/new_code?id=kevinbevers_ip-s6-itersocium)
+
 <h1 align="center">
   <img src="https://github.com/kevinbevers/ip-s6-itersocium/blob/main/docs/images/logo.png" alt="IterSocium" width="250">
   <br>
@@ -10,11 +12,10 @@ Developed to proof the learning outcomes of semester 6 IT & Software Engineering
 </p><br /><br />
 
 <p align="center">
-  <a href="#key-features">Key Features</a> •
   <a href="#tech-stack">Tech Stack</a> •
   <a href="#development">Development</a> •
   <a href="#cluster-setup">Cluster Setup</a> •
-  <a href="#how-to-use">Links</a>
+  <a href="#links">Links</a>
 </p>
 
 ## Tech Stack
