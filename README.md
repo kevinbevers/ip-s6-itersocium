@@ -124,4 +124,3 @@ kubectl apply -f ./k8s -n itersocium
 ## Links
 
 - [Proof of architecture scalability](https://github.com/yugabyte/yugabyte-graphql-apps/blob/master/graphql-subscription-with-yugabytedb/1M_subscriptions.md)
-
