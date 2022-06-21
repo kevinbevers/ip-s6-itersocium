@@ -14,7 +14,7 @@ Developed to proof the learning outcomes of semester 6 IT & Software Engineering
   <a href="#tech-stack">Tech Stack</a> •
   <a href="#development">Development</a> •
   <a href="#cluster-setup">Cluster Setup</a> •
-  <a href="#how-to-use">Links</a>
+  <a href="#links">Links</a>
 </p>
 
 ## Tech Stack
@@ -123,4 +123,3 @@ kubectl apply -f ./k8s -n itersocium
 ## Links
 
 - [Proof of architecture scalability](https://github.com/yugabyte/yugabyte-graphql-apps/blob/master/graphql-subscription-with-yugabytedb/1M_subscriptions.md)
-
