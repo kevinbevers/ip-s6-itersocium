@@ -1,11 +1,10 @@
 name: Hasura Tests
 
 on:
-  pull_request:
-    branches:
+  pull_request:     
+    branches: 
       - staging
-    # paths:
-    #   - "hasura/**"
+
 jobs:
   build:
     runs-on: ubuntu-latest
