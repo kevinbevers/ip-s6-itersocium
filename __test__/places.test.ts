@@ -2,7 +2,7 @@
 require("isomorphic-fetch");
 
 describe("Places Tests", () => {
-  it("should get return all migrated places", async () => {
+  it("should get return all 5 migrated places", async () => {
     expect.assertions(1);
     try {
       const url = new URL(process.env.HASURA_ENDPOINT ?? "")

@@ -4,8 +4,8 @@ on:
   pull_request:
     branches:
       - staging
-    paths:
-      - "hasura/**"
+    # paths:
+    #   - "hasura/**"
 jobs:
   build:
     runs-on: ubuntu-latest
