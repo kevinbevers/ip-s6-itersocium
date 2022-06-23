@@ -31,4 +31,35 @@ describe("Places Tests", () => {
       console.log(error);
     }
   });
+
+  it("First place returned is in italy", async () => {
+    expect.assertions(1);
+    try {
+      const url = new URL(process.env.HASURA_ENDPOINT ?? "")
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "x-hasura-admin-secret": "admin_secret",
+        },
+        body: JSON.stringify({
+          query: `query PopularPlaces {
+            places {
+              details
+              id
+              image
+              location
+              name
+            }
+          }
+          `,
+          variables: {},
+        }),
+      });
+      const { data } = await response.json();
+      expect(data.places[0].location).toBe("Italy");
+    } catch (error) {
+      console.log(error);
+    }
+  });
+
 });
