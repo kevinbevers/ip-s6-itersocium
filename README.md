@@ -1,16 +1,18 @@
+[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-black.svg)](https://sonarcloud.io/summary/new_code?id=kevinbevers_ip-s6-itersocium)
+
 <h1 align="center">
   <img src="https://github.com/kevinbevers/ip-s6-itersocium/blob/main/docs/images/logo.png" alt="IterSocium" width="250">
   <br>
   IterSocium
   <br>
 </h1>
+
 <p>
 Codebase for a fullstack application that enables you to plan your travels and share them.<br /><br />
 Developed to proof the learning outcomes of semester 6 IT & Software Engineering @<br /> <a href="https://fontys.nl/Over-Fontys/Fontys-Hogeschool-ICT.htm">Fontys university of applied sciences.</a>
 </p><br /><br />
 
 <p align="center">
-  <a href="#key-features">Key Features</a> •
   <a href="#tech-stack">Tech Stack</a> •
   <a href="#development">Development</a> •
   <a href="#cluster-setup">Cluster Setup</a> •
@@ -101,7 +103,7 @@ First start the cluster with the following command:
  ```bash
  $ minikube start --cpus 4 --memory 5120
  ```
-
+ 
 If you are running in a resource-constrained environment or a local environment, such as Minikube, you have to change the default resource requirements by using the following command:
 
 Create a itersocium namespace:
