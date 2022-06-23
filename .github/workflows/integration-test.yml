@@ -73,6 +73,9 @@ jobs:
       #     HASURA_ENDPOINT: http://172.17.0.1:8080
       #     HASURA_ADMIN_SECRET: admin_secret
 
+    
       - name: Run unit tests
-        run: yarn test:ci
+        run: | 
+          yarn
+          yarn test:ci
         working-directory: hasura
