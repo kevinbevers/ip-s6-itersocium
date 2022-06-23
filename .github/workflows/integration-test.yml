@@ -39,7 +39,7 @@ jobs:
           args: metadata apply
         env:
           PATH_TO_HASURA_PROJECT_ROOT: ./hasura
-          HASURA_CLI_VERSION: v2.0.7
+          HASURA_CLI_VERSION: v2.6.1
           HASURA_ENDPOINT: http://172.17.0.1:8080
           HASURA_ADMIN_SECRET: admin_secret
 
@@ -49,7 +49,7 @@ jobs:
           args: migrate apply --database-name default
         env:
           PATH_TO_HASURA_PROJECT_ROOT: ./hasura
-          HASURA_CLI_VERSION: v2.0.7
+          HASURA_CLI_VERSION: v2.6.1
           HASURA_ENDPOINT: http://172.17.0.1:8080
           HASURA_ADMIN_SECRET: admin_secret
 
@@ -59,19 +59,19 @@ jobs:
           args: metadata reload
         env:
           PATH_TO_HASURA_PROJECT_ROOT: ./hasura
-          HASURA_CLI_VERSION: v2.0.7
+          HASURA_CLI_VERSION: v2.6.1
           HASURA_ENDPOINT: http://172.17.0.1:8080
           HASURA_ADMIN_SECRET: admin_secret
 
-      - name: Hasura CI/CD
-        uses: browniefed/hasura-runner@master
-        with:
-          args: seeds apply --database-name default
-        env:
-          PATH_TO_HASURA_PROJECT_ROOT: ./hasura
-          HASURA_CLI_VERSION: v2.0.7
-          HASURA_ENDPOINT: http://172.17.0.1:8080
-          HASURA_ADMIN_SECRET: admin_secret
+      # - name: Hasura CI/CD
+      #   uses: browniefed/hasura-runner@master
+      #   with:
+      #     args: seeds apply --database-name default
+      #   env:
+      #     PATH_TO_HASURA_PROJECT_ROOT: ./hasura
+      #     HASURA_CLI_VERSION: v2.6.1
+      #     HASURA_ENDPOINT: http://172.17.0.1:8080
+      #     HASURA_ADMIN_SECRET: admin_secret
 
       - name: Run unit tests
         run: yarn test:ci
