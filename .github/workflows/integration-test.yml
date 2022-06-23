@@ -74,7 +74,7 @@ jobs:
       #     HASURA_ADMIN_SECRET: admin_secret
 
     
-      - name: Run unit tests
+      - name: Run tests
         run: | 
           yarn
           yarn test:ci
