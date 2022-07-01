@@ -27,7 +27,7 @@
     "react-native-safe-area-context": "4.3.1",
     "react-native-ui-lib": "^6.17.2",
     "urql": "^2.2.2",
-    "react-native-web": "0.18.1"
+    "react-native-web": "0.18.2"
   },
   "devDependencies": {
     "@babel/core": "^7.18.6"
